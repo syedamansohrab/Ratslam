@@ -1,0 +1,21 @@
+<launch>
+  <node name="event_bridge" pkg="event_bridge" type="bridge_node" output="screen" />
+
+  <node name="RatSLAMLocalView" pkg="ratslam_ros" type="ratslam_lv" 
+        args="$(find event_bridge)/config/rat_config.txt" output="screen">
+
+     <remap from="/ratslam/camera/image" to="/ratslam/camera/image" />
+  </node>
+
+  <node name="RatSLAMPoseCells" pkg="ratslam_ros" type="ratslam_pc" 
+        args="$(find event_bridge)/config/rat_config.txt" output="screen">
+
+     <remap from="/odom" to="/odom" />
+  </node>
+
+  <node name="RatSLAMExperienceMap" pkg="ratslam_ros" type="ratslam_em" 
+        args="$(find event_bridge)/config/rat_config.txt" output="screen" />
+
+  <node pkg="rviz" type="rviz" name="rviz" />
+
+</launch>

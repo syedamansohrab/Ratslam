@@ -1,0 +1,83 @@
+[general]/home/aman/ratslam_ws/src/ratslam/src/media
+topic_root=/ratslam
+# This fixes the "particle.bmp" error. 
+# We point it to the media folder inside the ratslam package.
+media_path=/home/aman/ratslam_ws/src/ratslam/ratslam_ros/media
+
+[ratslam]
+image_topic=/ratslam/camera/image
+odom_topic=/odom
+
+[ratslam.local_view]
+# Visual Processing Settings
+template_x_size=60
+template_y_size=40
+
+# Crop (remove sky/hood noise)
+image_crop_x_min=0
+image_crop_x_max=340
+image_crop_y_min=80
+image_crop_y_max=250
+
+# Matching Thresholds
+vt_match_threshold=0.04
+
+[ratslam.pose_cells]
+# Spatial Navigation Settings
+pc_dim_x=500
+pc_dim_y=500
+pc_dim_th=36
+
+pc_cell_x_size=1.0
+pc_cell_th_size=10.0
+
+start_pose_x=250.0
+start_pose_y=250.0
+start_pose_th=18.0
+
+[ratslam.experience_map]
+# Graph Building Settings
+exp_loops=5
+exp_threshold=0.5[General]
+image_topic=/ratslam/camera/image
+odom_topic=/odom
+topic_root=/ratslam
+
+[ImageProcessing]
+# We use a small template size because Time Surfaces are simple
+template_x_size=60
+template_y_size=40
+
+# Crop the top of the image (often sky/noise in car datasets)
+window_min_y=80
+window_max_y=250
+window_min_x=0
+window_max_x=340
+
+[VisualOdometry]
+# We are providing our own Odom from the bridge, so we disable internal VO
+use_ odometry=0
+
+[LocalViewCells]
+# Learning rates for place recognition
+decay=1.0
+dim_x=60
+dim_y=40
+
+[PoseCells]
+# Map size and resolution
+pc_dim_x=1000
+pc_dim_y=1000
+pc_dim_th=36
+
+pc_cell_x_size=1.0
+pc_cell_th_size=10.0
+
+start_pose_x=500.0
+start_pose_y=500.0
+start_pose_th=18.0
+
+[ExperienceMap]
+# Graph building thresholds
+exp_loops=5
+exp_threshold=0.5

@@ -1,0 +1,46 @@
+[general]
+# We restore this because RatSLAM needs it to find the camera
+topic_root=/ratslam
+media_path=/home/aman/ratslam_ws/src/ratslam/src/media
+
+[ratslam]
+# Relative paths (topic_root adds the prefix)
+image_topic=camera/image
+# We let this default to /ratslam/odom, and we will RELAY /odom to it
+odom_topic=odom
+
+# --- VISUAL SETTINGS (Integrated) ---
+vt_normalisation=0.4
+vt_match_threshold=0.04
+vt_active_decay=0.05
+
+# Standard Crop
+image_crop_x_min=0
+image_crop_x_max=345
+image_crop_y_min=20
+image_crop_y_max=255
+template_x_size=40
+template_y_size=20
+vt_shift_match=5
+vt_step_match=1
+
+# --- POSE CELLS (Fast Motion) ---
+pc_cell_x_size=0.2
+pc_dim_xy=50
+pc_dim_th=36
+pc_vt_inject_energy=0.15
+pc_vt_restore=0.04
+
+# --- EXPERIENCE MAP (Instant Draw) ---
+exp_delta_pc_threshold=0.1
+exp_loops=5
+exp_threshold=0.5
+
+[draw]
+enable=1
+vt_window_width=640
+vt_window_height=600
+exp_map_size=500
+posecells_size=500
+media_path=/home/aman/ratslam_ws/src/ratslam/src/media
+image_file=irat_sm.tga
