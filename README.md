@@ -1,6 +1,6 @@
 # Direct Event-Driven Topological SLAM (event_bridge)
 
-This repository contains a ROS package (event_bridge) that implements a pure event-driven approach to Simultaneous Localization and Mapping (SLAM) using the OpenRatSLAM framework.
+This repository contains a ROS package (`event_bridge`) that implements a pure event-driven approach to Simultaneous Localization and Mapping (SLAM) using the [OpenRatSLAM](https://openslam-org.github.io/openratslam.html) framework.
 
 Unlike previous hybrid architectures that rely on standard intensity frames or computationally heavy image reconstruction (e.g., [E2VID](https://rpg.ifi.uzh.ch/docs/TPAMI19_Rebecq.pdf)), this implementation performs ***Direct Event Integration***. It uses raw Time Surfaces (Motion History Images) for topological place recognition and transcodes raw IMU gyroscope data into robot odometry to accurately map trajectory curvature.
 
@@ -10,9 +10,9 @@ Unlike previous hybrid architectures that rely on standard intensity frames or c
 
 ## 🚀 Key Features
 
-**Pure Event Vision:** Bypasses intensity images completely. The RatSLAM LocalView is driven directly by continuous Time Surfaces generated from the DVS event stream.*
+**Pure Event Vision:** Bypasses intensity images completely. The RatSLAM `LocalView` is driven directly by continuous Time Surfaces generated from the DVS event stream.
 
-**Neuromorphic Odometry:** The fix_turn.py node acts as an IMU-to-Odometry transcoder, converting raw angular velocity ($z$-axis) into standard ROS Odometry to drive the Pose Cell network.
+**Neuromorphic Odometry:** The `fix_turn.py` node acts as an IMU-to-Odometry transcoder, converting raw angular velocity ($z$-axis) into standard ROS Odometry to drive the Pose Cell network.
 
 **High-Speed & HDR Capable:** Inherits the natural benefits of event cameras, remaining robust to motion blur and challenging lighting conditions where standard SLAM fails.
 
@@ -52,7 +52,7 @@ source devel/setup.bash
 
 ## 🏃‍♂️ How to Run the Pipeline
 
-Running the full system requires opening multiple terminal windows. Remember to source your workspace in every new terminal (source devel/setup.bash).
+Running the full system requires opening multiple terminal windows. Remember to source your workspace in every new terminal (`source devel/setup.bash`).
 
 ### 1. Launch the RatSLAM Vision & Mapping Core
 
@@ -87,8 +87,8 @@ rosrun image_view image_view image:=/davis/left/image_raw
 
 Once the dataset begins playing, you should observe:
 
-**Local View Window:** Displaying sparse "white dots" on a black background. These are the decaying Time Surfaces representing structural edges in motion.
+**Local View Window:** Displaying sparse *"white dots"* on a black background. These are the decaying Time Surfaces representing structural edges in motion.
 
-**Pose Cell Network:** The red activity "blob" will shift and rotate continuously, driven by the fix_turn.py odometry script.
+**Pose Cell Network:** The red activity *"blob"* will shift and rotate continuously, driven by the `fix_turn.py` odometry script.
 
 **Experience Map:** As the vehicle turns in the dataset, a blue trajectory line will autonomously generate and curve in sync with the physical road geometry.
