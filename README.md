@@ -2,7 +2,7 @@
 
 This repository contains a ROS package (event_bridge) that implements a pure event-driven approach to Simultaneous Localization and Mapping (SLAM) using the OpenRatSLAM framework.
 
-Unlike previous hybrid architectures that rely on standard intensity frames or computationally heavy image reconstruction (e.g., E2VID), this implementation performs ***Direct Event Integration***. It uses raw Time Surfaces (Motion History Images) for topological place recognition and transcodes raw IMU gyroscope data into robot odometry to accurately map trajectory curvature.
+Unlike previous hybrid architectures that rely on standard intensity frames or computationally heavy image reconstruction (e.g., [E2VID](https://rpg.ifi.uzh.ch/docs/TPAMI19_Rebecq.pdf)), this implementation performs ***Direct Event Integration***. It uses raw Time Surfaces (Motion History Images) for topological place recognition and transcodes raw IMU gyroscope data into robot odometry to accurately map trajectory curvature.
 
 **Author:** Syed Aman Sohrab
 
